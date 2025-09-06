@@ -69,6 +69,12 @@ export const handler = async (event, context) => {
     };
   } catch (error) {
     console.error('Error calling 2brain API:', error);
+    console.error('Error details:', {
+      message: error.message,
+      status: error.status,
+      code: error.code,
+      type: error.type
+    });
 
     return {
       statusCode: 500,
@@ -76,6 +82,9 @@ export const handler = async (event, context) => {
       body: JSON.stringify({
         error: 'Failed to get response from chatbot',
         success: false,
+        details: error.message,
+        apiKeySet: !!process.env.TWOBRAIN_API_KEY,
+        baseUrlSet: !!process.env.TWOBRAIN_BASE_URL
       }),
     };
   }
