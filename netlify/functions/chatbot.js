@@ -1,6 +1,6 @@
-const { OpenAI } = require('openai');
+import { OpenAI } from 'openai';
 
-exports.handler = async (event, context) => {
+export const handler = async (event, context) => {
   // Set CORS headers
   const headers = {
     'Access-Control-Allow-Origin': '*',
@@ -39,9 +39,15 @@ exports.handler = async (event, context) => {
     }
 
     // Initialize OpenAI client with 2brain configuration
+    const apiKey = process.env.TWOBRAIN_API_KEY || '2B-pZSUfUKTekLfmIaWUzb8kqKfTW4EK669c0FzAcmsA3GDMAyIuD';
+    const baseURL = process.env.TWOBRAIN_BASE_URL || 'https://ai.2brain.cn/api/bot/chat/v1';
+    
+    console.log('API Key:', apiKey ? `${apiKey.substring(0, 10)}...` : 'NOT SET');
+    console.log('Base URL:', baseURL);
+    
     const client = new OpenAI({
-      apiKey: process.env.TWOBRAIN_API_KEY || '2B-JBU5u4VLXhB6yZeP7RBNUE6H1GpeDaf4yhW4XNGzMNRhFw1YUb',
-      baseURL: process.env.TWOBRAIN_BASE_URL || 'https://portal.2brain.ai/api/bot/chat/v1',
+      apiKey: apiKey,
+      baseURL: baseURL,
     });
 
     // Call 2brain API
