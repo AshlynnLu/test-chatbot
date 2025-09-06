@@ -39,8 +39,8 @@ export const handler = async (event, context) => {
     }
 
     // Initialize OpenAI client with 2brain configuration
-    const apiKey = process.env.TWOBRAIN_API_KEY || '2B-pZSUfUKTekLfmIaWUzb8kqKfTW4EK669c0FzAcmsA3GDMAyIuD';
-    const baseURL = process.env.TWOBRAIN_BASE_URL || 'https://ai.2brain.cn/api/bot/chat/v1';
+    const apiKey = process.env.TWOBRAIN_API_KEY || '2B-7UeSJ4yJV1IoFOpbfGKsbfqhMXXmucScw2vdbpRifhYEKH5zcE';
+    const baseURL = process.env.TWOBRAIN_BASE_URL || 'https://portal.2brain.ai/api/bot/chat/v1';
     
     console.log('API Key:', apiKey ? `${apiKey.substring(0, 10)}...` : 'NOT SET');
     console.log('Base URL:', baseURL);
